@@ -1,7 +1,7 @@
 const form = document.querySelector('form');
-
 const startButton = document.getElementById('start-button');
 const roundOne = document.getElementById('round-one');
+
 const roundOneQuestions = [
   {
     input: document.getElementById('num-planets-input'),
@@ -16,7 +16,7 @@ const roundOneQuestions = [
 ];
 
 const nextRoundButton = document.getElementById('next-round-button');
-const roundTwo = document.getElementById('round-to');
+const roundTwo = document.getElementById('round-two');
 const roundTwoQuestions = [
   {
     input: document.getElementById('galilean-moons-input'),
@@ -38,6 +38,7 @@ const scores = [];
 startButton.addEventListener('click', startGame);
 
 function startGame() {
+  console.log('Starting game!');
   roundOne.classList.remove('hidden');
   startButton.classList.add('hidden');
 
@@ -45,16 +46,14 @@ function startGame() {
     const question = roundOneQuestions[i];
 
     function answerQuestion() {
-      const score;
+      var score = 0;
       if (question.input.value == question.answer) {
-        score = 1;
+        score++;
 
         question.reactionArea.innerText = 'Congrats! You got the question right!';
         question.reactionArea.classList.add('correct');
         question.reactionArea.classList.remove('incorrect');
       } else {
-        score = 0;
-
         question.reactionArea.innerText = "Not quite right, but you're almost there!";
         question.reactionArea.classList.add('incorrect');
         question.reactionArea.classList.remove('correct');
@@ -78,6 +77,7 @@ function startGame() {
 }
 
 function startRoundTwo(event) {
+  console.log('Starting round two!');
   event.preventDefault();
 
   if (scores.length < roundOneQuestions.length) {
@@ -93,17 +93,15 @@ function startRoundTwo(event) {
     const question = roundTwoQuestions[i];
 
     function answerQuestion() {
-      let score;
+      var score;
       if (question.input.value === question.answer) {
-        score = 1;
+        score++;
 
         question.reactionArea.innerText = 'Congrats! You got the question right!';
         question.reactionArea.classList.add('correct');
         question.reactionArea.classList.remove('incorrect');
       } else {
-        score = 0;
-
-        question.reactionArea.innerText = 'Not quite right, but you're almost there!';
+        question.reactionArea.innerText = "Not quite right, but you're almost there!";
         question.reactionArea.classList.add('incorrect');
         question.reactionArea.classList.remove('correct');
       }
