@@ -21,7 +21,7 @@ const roundTwoQuestions = [
   {
     input: document.getElementById('galilean-moons-input'),
     reactionArea: document.getElementById('galilean-moons-reaction'),
-    answer: 4,
+    answer: "4",
   },
   {
     input: document.getElementById('surface-temp-input'),
@@ -46,7 +46,8 @@ function startGame() {
     const question = roundOneQuestions[i];
 
     function answerQuestion() {
-      var score = 0;
+
+      let score = 0;
       if (question.input.value == question.answer) {
         score++;
 
@@ -89,11 +90,12 @@ function startRoundTwo(event) {
 
   roundOneQuestions.forEach(question => question.deactivate());
 
-  for (let i = 0; i < roundTwoQuestions.size; i++) {
+  for (let i = 0; i < roundTwoQuestions.length; i++) {
     const question = roundTwoQuestions[i];
 
     function answerQuestion() {
-      var score;
+
+      let score = 0;
       if (question.input.value === question.answer) {
         score++;
 
@@ -139,8 +141,9 @@ function finishGame(event) {
   finishButton.classList.add('hidden');
   finalScore.classList.remove('hidden');
 
-  const sum = 0;
-  for (const score of scores) {
+  // Changed from const 
+  let sum = 0;
+  for (let score of scores) {
     sum += score;
   }
 
